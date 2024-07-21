@@ -13,10 +13,13 @@ function playSpawnPlayer(playerElement)
 	local posX, posY, posZ, rotX = unpack(spawnData)
 	local randomSkin = math.random(skinsCount)
 	local skinID = playerSkins[randomSkin]
+	local spawnMoney = playerSettings["spawnMoney"]
 
 	posX, posY = posX + math.random(-3, 3), posY + math.random(-3, 3)
 
 	spawnPlayer(playerElement, posX, posY, posZ, rotX, skinID, 0, 0, nil)
+	givePlayerMoney(playerElement, spawnMoney)
+
 	fadeCamera(playerElement, true)
 	setCameraTarget(playerElement)
 end
